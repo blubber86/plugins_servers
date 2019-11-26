@@ -1,0 +1,11 @@
+{"plugin":
+	{
+		"info":
+		{
+			"name":"Servers",
+			"folder":"servers",
+			"modulname":"servers"
+		},
+		"widgets":["widget_servers_functions.php"]
+	}
+}
