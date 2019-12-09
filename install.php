@@ -9,7 +9,7 @@ function goBack() {
 $modulname	 	= 	"servers"; 								// name to uninstall
 $plugin_table 	= 	"servers"; 								// name of the mysql table
 $str			=	"Servers"; 								// name of the plugin
-$navi_name		=	"{[de]}Server{[en]}Servers";			// name of the Navi
+$navi_name		=	"{[de]}Server{[en]}Servers{[en]}Server";			// name of the Navi
 $description	=	"Mit diesem Plugin könnt ihr eure Server anzeigen lassen."; 	// description of the plugin
 $admin_file 	=	"admin_servers";						// administration file
 $activate 		=	"1";									// plugin activate 1 yes | 0 no
