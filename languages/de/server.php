@@ -55,9 +55,6 @@ $language_array = array(
   'sort'=>'Sortierung',
   'transaction_invalid'=>'Transaktions ID ungültig',
   'to_sort'=>'sortieren',
-  'options'=>'Optionen',
-  'info'=> '<div class="alert alert-warning" role="alert"><b>Sprachanwendung:</b><br>
-In dem Text muss ein entsprechender Sprach-Tag hinterlegt werden, was wie folgt aussieht.<br>{[de]} Überschrift und Text in deutscher Sprache.<br>
-{[en]} Heading and text in English.</div>'
+  'options'=>'Optionen'
 );
 

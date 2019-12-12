@@ -162,8 +162,7 @@ echo '<script>
 
   <div class="form-group">
    <div class="col-md-12">
-    '.$plugin_language['info'].'
-      <textarea class="ckeditor" id="ckeditor" name="message" rows="10" cols="" ></textarea>
+    <textarea class="ckeditor" id="ckeditor" name="message" rows="10" cols="" ></textarea>
     </div>
   </div>
   <div class="form-group">
@@ -245,8 +244,7 @@ echo'<div class="card">
 
   <div class="row">
   <div class="col-md-12">
-   '.$plugin_language['info'].'
-<div class="form-group">
+   <div class="form-group">
    <div class="col-md-12">
       <textarea class="ckeditor" id="ckeditor" name="message" rows="10" cols="" >'.getinput($ds['info']).'</textarea>
     </div>

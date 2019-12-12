@@ -56,9 +56,6 @@ $language_array = array(
   'sort'=>'Sorting',
   'transaction_invalid'=>'Transaction ID invalid',
   'to_sort'=>'sort',
-  'options'=>'Options',
-  'info'=> '<div class="alert alert-warning" role="alert"><b>Voice Application:</b><br>
-The headline and the text must have a corresponding language tag, which looks like this.<br>{[de]} Überschrift und Text in deutscher Sprache.<br>
-{[en]} Heading and text in English.</div>'
+  'options'=>'Options'
 );
 
