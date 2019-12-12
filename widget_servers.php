@@ -48,7 +48,7 @@ if (mysqli_num_rows($ergebnis)) {
     while ($ds = mysqli_fetch_array($ergebnis)) {
 
     $data_array= array();
-    $servername = htmloutput($ds[ 'name' ]);
+    $servername = $ds[ 'name' ];
     $serverip = $ds[ 'ip' ];
     $filepath = "../images/games/";
     $servergame = ''.$filepath.'' . $ds[ 'game' ] . '.gif';
