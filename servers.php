@@ -31,8 +31,6 @@
     $pm = new plugin_manager(); 
     $plugin_language = $pm->plugin_language("server", $plugin_path);
 
-$_language->readModule('server');
-
 $plugin_data= array();
 $plugin_data['$title']=$plugin_language['server'];
 
