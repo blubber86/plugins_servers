@@ -28,8 +28,10 @@
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
 # Sprachdateien aus dem Plugin-Ordner laden
-    $pm = new plugin_manager(); 
-    $plugin_language = $pm->plugin_language("server", $plugin_path);
+$pm = new plugin_manager(); 
+$plugin_language = $pm->plugin_language("server", $plugin_path);
+
+$_language->readModule('server');
 
 $plugin_data= array();
 $plugin_data['$title']=$plugin_language['server'];
@@ -62,16 +64,33 @@ if (mysqli_num_rows($ergebnis)) {
             $port = '';
         }
 
-        if (!checkenv('disable_functions', 'fsockopen')) {
-            if (!fsockopen("udp://" . $ip, $port, $strErrNo, $strErrStr, 30)) {
+        //if (!checkenv('disable_functions', 'fsockopen')) {
+        //    if (!fsockopen("udp://" . $ip, $port, $strErrNo, $strErrStr, 30)) {
+        //        $status = "<em style='color: #da0c0c'>" . $plugin_language[ 'timeout' ] . "</em>";
+        //    } else {
+        //        $status = "<strong style='color: #5cb85c'>" . $plugin_language[ 'online' ] . "</strong>";
+        //    }
+        //} else {
+        //    $status = "<em style='color: #da0c0c'>" . $plugin_language[ 'not_supported' ] . "</em>";
+        //}
+        $server_timeout = 2;
+        $fp = fsockopen("udp://".$ip, $port, $errno, $errstr);
+        if(!$fp) {
+            $status = "<em style='color: #da0c0c'>" . $plugin_language[ 'not_supported' ] . " ERROR: $errno - $errstr</em><br />";
+        } else {
+            fwrite($fp, "\\xFA\\");
+            stream_set_timeout($fp, 2);
+            $res = fread($fp, 2000);
+            $info = stream_get_meta_data($fp);
+            fclose($fp);
+            if($info['timed_out']) {
                 $status = "<em style='color: #da0c0c'>" . $plugin_language[ 'timeout' ] . "</em>";
-            } else {
+            } elseif($res == '') {
+                $status = "<em style='color: #da0c0c'>" . $plugin_language[ 'timeout' ] . "</em>";
+            }  else{
                 $status = "<strong style='color: #5cb85c'>" . $plugin_language[ 'online' ] . "</strong>";
             }
-        } else {
-            $status = "<em style='color: #da0c0c'>" . $plugin_language[ 'not_supported' ] . "</em>";
         }
-
         $servername = $ds[ 'name' ];
         $info = $ds[ 'info' ];
 
@@ -97,15 +116,11 @@ if (mysqli_num_rows($ergebnis)) {
         $data_array['$server_link']=$plugin_language['link'];
 
         $template = $GLOBALS["_template"]->loadTemplate("servers","content", $data_array, $plugin_path);
-        echo $template;
-        
+        echo $template;        
     }
 } else {
-    
     echo $plugin_language['no_server'];
 }
-
-     $template = $GLOBALS["_template"]->loadTemplate("servers","foot", array(), $plugin_path);
-     echo $template;  
-
+$template = $GLOBALS["_template"]->loadTemplate("servers","foot", array(), $plugin_path);
+echo $template;  
 ?>
